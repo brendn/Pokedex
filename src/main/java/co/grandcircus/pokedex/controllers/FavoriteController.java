@@ -8,8 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import co.grandcircus.pokedex.Pokemon;
+import co.grandcircus.pokedex.FavoritePokemon;
 import co.grandcircus.pokedex.api.PokemonService;
+import co.grandcircus.pokedex.api.model.Pokemon;
 
 @Controller
 public class FavoriteController {
@@ -17,19 +18,23 @@ public class FavoriteController {
 	@Autowired
 	private PokemonRepository repo;
 	
+	@Autowired
+	private PokemonService apiService;
+	
 	@RequestMapping("/favorite")
 	public String favoritePage(Model model) {
-		List<Pokemon> pokemonList = repo.findAll();
+		List<FavoritePokemon> pokemonList = repo.findAll();
+		List<Pokemon> pokemonInfoList = apiService.getPokemon(pokemonList.size());
 		model.addAttribute("pokemonList", pokemonList);
 		
 		return "favorites";
 	}
 	
 	@RequestMapping("/addFavorite")
-	public String addFavorite(@RequestParam int id, @RequestParam String name, @RequestParam String type, @RequestParam String sprite, Model model) {
-		Pokemon pokemon = new Pokemon(id, name, type, sprite);
+	public String addFavorite(@RequestParam int id, @RequestParam String name, Model model) {
+		FavoritePokemon pokemon = new FavoritePokemon(id, name);
 		repo.insert(pokemon);
-		List<Pokemon> pokemonList = repo.findAll();
+		List<FavoritePokemon> pokemonList = repo.findAll();
 		model.addAttribute("pokemonList", pokemonList);
 		
 		return "favorites";
