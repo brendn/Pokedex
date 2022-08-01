@@ -10,11 +10,17 @@
 </head>
 <body>
 <h1>Favorites</h1>
-<c:forEach var="pokemon" items="${pokemon}">
+<table class="table">
+<tr>
+<c:forEach var="pokemon" items="${pokemonList}">
+<td>
 ${pokemon.name}<br>
-${pokemon.id}<br>
-${pokemon.type}<br>
+No. ${pokemon.id}<br>
+Type: ${pokemon.type}<br>
 <img src="${pokemon.sprite}">
+</td>
 </c:forEach>
+</tr>
+</table>
 </body>
 </html>
