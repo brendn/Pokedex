@@ -22,4 +22,5 @@ public class PokemonService {
     public Pokemon getPokemonInfo(int id) {
         return request.getForObject(String.format(REQUEST_INFO, id), Pokemon.class);
     }
+    
 }
