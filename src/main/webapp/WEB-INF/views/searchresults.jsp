@@ -38,7 +38,7 @@
 	
 			<c:forEach items="${pokemon}" var="poke">				
 			
-					<option value ="${poke.getName()}"> ${poke.getId()} </option>												
+					<option value ="${poke.getName()}"> ${poke.getName()} </option>												
 				
 			</c:forEach>
 			

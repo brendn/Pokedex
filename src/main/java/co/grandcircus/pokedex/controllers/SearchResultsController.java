@@ -14,7 +14,7 @@ public class SearchResultsController {
 	
 	@Autowired
 	public PokemonService service;
-//	private PokemonRepository repo;
+	private PokemonRepository repo;
 	
 	@RequestMapping("/searchresults")
 	public String searchResults(Model model) {

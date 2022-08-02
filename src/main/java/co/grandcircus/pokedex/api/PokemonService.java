@@ -22,12 +22,6 @@ public class PokemonService {
     public Pokemon getPokemonInfo(int id) {
         return request.getForObject(String.format(REQUEST_INFO, id), Pokemon.class);
     }
-    
-    public Pokemon readAll(Long id) {
-		String url = "https://pokeapi.co/api/v2/pokemon/{id}";
-		
-		Pokemon response = request.getForObject(url, Pokemon.class, id);
-		return response;
-	}
+
     
 }
