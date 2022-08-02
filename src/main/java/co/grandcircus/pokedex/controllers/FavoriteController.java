@@ -25,7 +25,7 @@ public class FavoriteController {
 	@RequestMapping("/favorite")
 	public String favoritePage(Model model) {
 		List<FavoritePokemon> pokemonList = repo.findAll();
-		List<Pokemon> infoList = new ArrayList();
+		List<Pokemon> infoList = new ArrayList<>();
 		for (FavoritePokemon dude:pokemonList) {
 			infoList.add(apiService.getPokemonInfo(dude.getId()));
 		}
