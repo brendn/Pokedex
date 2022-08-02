@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("pokemon")
-public class Pokemon {
+public class FavoritePokemon {
 
 	@Id
 	private int id;
@@ -12,14 +12,14 @@ public class Pokemon {
 	private String type;
 	private String sprite;
 	
-	public Pokemon(int id, String name, String type, String sprite) {
+	public FavoritePokemon(int id, String name, String type, String sprite) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.sprite = sprite;
 	}
 
-	public Pokemon() {
+	public FavoritePokemon() {
 	}
 
 	public int getId() {
