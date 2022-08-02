@@ -12,7 +12,7 @@
 <h1>Favorites</h1>
 <table class="table">
 <tr>
-<c:forEach var="pokemon" items="${pokemonList}">
+<c:forEach var="pokemon" items="${infoList}">
 <td>
 ${pokemon.name}<br>
 No. ${pokemon.id}<br>

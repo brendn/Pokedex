@@ -1,5 +1,6 @@
 package co.grandcircus.pokedex.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,11 @@ public class FavoriteController {
 	@RequestMapping("/favorite")
 	public String favoritePage(Model model) {
 		List<FavoritePokemon> pokemonList = repo.findAll();
-		List<Pokemon> pokemonInfoList = apiService.getPokemon(pokemonList.size());
-		model.addAttribute("pokemonList", pokemonList);
+		List<Pokemon> infoList = new ArrayList();
+		for (FavoritePokemon dude:pokemonList) {
+			infoList.add(apiService.getPokemonInfo(dude.getId()));
+		}
+		model.addAttribute("infoList", infoList);
 		
 		return "favorites";
 	}
