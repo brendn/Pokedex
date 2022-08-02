@@ -15,9 +15,14 @@
 <c:forEach var="pokemon" items="${infoList}">
 <td>
 ${pokemon.name}<br>
-No. ${pokemon.id}<br>
-Type: ${pokemon.type}<br>
-<img src="${pokemon.sprite}">
+No. ${pokemon.getID()}<br>
+Types:
+<ul>
+<c:forEach var="type" items = "${pokemon.getTypes()}">
+<li>${type}</li>
+</c:forEach>
+</ul>
+<img src="${pokemon.getSprite().getFront()}">
 </td>
 </c:forEach>
 </tr>
