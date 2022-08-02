@@ -26,11 +26,7 @@ public class FavoriteController {
 	public String favoritePage(Model model) {
 		List<FavoritePokemon> pokemonList = repo.findAll();
 		List<Pokemon> infoList = new ArrayList<>();
-<<<<<<< HEAD
-		for (FavoritePokemon dude:pokemonList) {
-=======
 		for (FavoritePokemon dude : pokemonList) {
->>>>>>> 1fcc6addbbcb0df825bda4ffdf728a897fd0d832
 			infoList.add(apiService.getPokemonInfo(dude.getId()));
 		}
 		model.addAttribute("infoList", infoList);
