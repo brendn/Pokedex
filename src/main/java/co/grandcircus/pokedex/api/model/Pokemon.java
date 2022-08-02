@@ -11,7 +11,7 @@ public class Pokemon {
 
     public String name;
 
-    public Type[] types;
+    private TypeOuter[] types;
 
     public Sprite sprites;
 
@@ -21,10 +21,6 @@ public class Pokemon {
 
     public String getName() {
         return name;
-    }
-
-    public Type[] getTypes() {
-        return types;
     }
 
     public Sprite getSprite() {
@@ -37,5 +33,13 @@ public class Pokemon {
 
     public int getID() {
         return id;
+    }
+
+    public String[] getTypes() {
+        String[] out = new String[types.length];
+        for (int i = 0; i < types.length; i++) {
+            out[i] = types[i].type.name;
+        }
+        return out;
     }
 }
