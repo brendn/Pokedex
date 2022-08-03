@@ -27,5 +27,7 @@ Types:
 </c:forEach>
 </tr>
 </table>
+<footer><form action="/">
+<input type="submit" value="Back home"></form></footer>
 </body>
 </html>
