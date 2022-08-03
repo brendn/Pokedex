@@ -25,18 +25,22 @@ public class FavoriteController {
 	@RequestMapping("/favorite")
 	public String favoritePage(Model model) {
 		List<FavoritePokemon> pokemonList = repo.findAll();
+
 		List<Pokemon> infoList = new ArrayList<>();
 		for (FavoritePokemon dude : pokemonList) {
 			infoList.add(apiService.getPokemonInfo(dude.getId()));
 		}
 		model.addAttribute("infoList", infoList);
+
 		
 		return "favorites";
 	}
 	
 	@RequestMapping("/addFavorite")
+
 	public String addFavorite(@RequestParam int id, @RequestParam String name, Model model) {
 		FavoritePokemon pokemon = new FavoritePokemon(id, name);
+
 		repo.insert(pokemon);
 		List<FavoritePokemon> pokemonList = repo.findAll();
 		model.addAttribute("pokemonList", pokemonList);

@@ -42,4 +42,8 @@ public class Pokemon {
         }
         return out;
     }
+
+    public String getOfficialArt() {
+        return String.format("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/%d.png", id);
+    }
 }

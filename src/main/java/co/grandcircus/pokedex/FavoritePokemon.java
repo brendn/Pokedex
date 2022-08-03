@@ -10,6 +10,7 @@ public class FavoritePokemon {
 	private int id;
 	private String name;
 	
+
 	public FavoritePokemon(int id, String name) {
 		this.id = id;
 		this.name = name;
