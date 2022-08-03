@@ -37,9 +37,10 @@ public class PokedexController {
         return "home";
     }
 
-    @PostMapping("/search")
+    @PostMapping("/searchresults")
     public String search(@RequestParam String search, Model model) {
-        model.addAttribute("input", search);
+        model.addAttribute("search", service.getPokemonByName(search));
+        model.addAttribute("pokemon", service.getPokemon(151));
         return "searchresults";
     }
 

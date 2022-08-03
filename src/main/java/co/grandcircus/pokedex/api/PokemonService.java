@@ -4,6 +4,7 @@ import co.grandcircus.pokedex.api.model.Pokemon;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -31,7 +32,5 @@ public class PokemonService {
 
     public Pokemon getRandomPokemon() {
         return getPokemonInfo(new Random().nextInt(151));
-    }
-
-    
+    } 
 }

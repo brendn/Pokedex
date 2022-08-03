@@ -14,7 +14,7 @@
                 <div id="window_title">POKeDEX</div>
                 <div id="window_text">
                     <p>Gotta catch them all!!</p>
-                    <form action="/search" method="POST">
+                    <form action="searchresults" method="POST">
                         <input name="search" placeholder="Pokemon Name or ID" />
                         <input type="submit" value="Search" />
                     </form>
