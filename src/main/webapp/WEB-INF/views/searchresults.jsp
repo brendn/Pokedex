@@ -22,7 +22,7 @@
 							<h1 class="title">${search.getName()}</h1>
 
 							<form action="/addfavorite" method="POST">
-								<button class="button" name="favorite">Favorite</button>
+								<button class="button" name="favorite" value ="${search.getName()}">Favorite</button>
 							</form>
 
 						</div>
@@ -44,7 +44,7 @@
 
 								<p class="title">${poke.getName()}</p>
 								<form action="/addfavorite" method="POST">
-									<button class="button" name="favorite">Favorite</button>
+									<button class="button" name="favorite" value ="${poke.getName()}">Favorite</button>
 								</form>
 
 							</div>
