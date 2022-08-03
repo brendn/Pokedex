@@ -1,5 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,12 +21,11 @@
                     <br />
                     <div id="button"><a href="/favorite">View Favorites</a></div>
                     <br />
-                    <c:forEach items="${pokemon}" var="poke" >
-                        <img src="${poke.getSprite().getFront()}" />
-                    </c:forEach>
-                    <img src="${ditto.getSprite().getFront()}" />
-                    <img src="${ditto.getSprite().getFrontShiny()}" />
-
+                    <img src="${pokemon.getOfficialArt()}" />
+                    <p><span class="poke_name">${pokemon.getName()}</span> <span class="poke_id">#${pokemon.getID()}</span>
+                    ${types}
+                    </p>
+                    <p><div id="button"><a href="/">Random Pokemon</a></div></p>
                 </div>
             </div>
         </div>

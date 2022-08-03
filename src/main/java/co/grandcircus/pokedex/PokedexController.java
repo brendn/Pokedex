@@ -16,38 +16,31 @@ import java.util.List;
 @Controller
 public class PokedexController {
 
-    private List<Pokemon> cache = new ArrayList<>();
-
     @Autowired
     public PokemonService service;
 
     @RequestMapping("/")
     public String home(Model model) {
-        if (cache.size() <= 0) {
-            load();
+        Pokemon pokemon = service.getRandomPokemon();
+        model.addAttribute("pokemon", pokemon);
+        StringBuilder types = new StringBuilder("[");
+
+        for (int i = 0; i < pokemon.getTypes().length; i++) {
+            if (i == pokemon.getTypes().length - 1) {
+                types.append(pokemon.getTypes()[i]);
+            } else {
+                types.append(pokemon.getTypes()[i]).append(", ");
+            }
         }
-        model.addAttribute("pokemon", cache);
+        types.append("]");
+        model.addAttribute("types", types.toString());
         return "home";
     }
 
     @PostMapping("/search")
     public String search(@RequestParam String search, Model model) {
         model.addAttribute("input", search);
-
         return "searchresults";
-    }
-
-    /**
-     * Adds the actual information for each Pokemon since the getPokemon results only provide a name.
-     */
-    private void load() {
-        cache = service.getPokemon(8);
-        List<Pokemon> fixed = new ArrayList<>();
-        for (Pokemon pokemon : cache) {
-            pokemon = service.getPokemonByName(pokemon.name);
-            fixed.add(pokemon);
-        }
-        cache = fixed;
     }
 
 }

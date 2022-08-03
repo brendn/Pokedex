@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class PokemonService {
@@ -26,6 +27,10 @@ public class PokemonService {
 
     public Pokemon getPokemonByName(String name) {
         return request.getForObject(String.format(REQUEST_INFO_NAME, name), Pokemon.class);
+    }
+
+    public Pokemon getRandomPokemon() {
+        return getPokemonInfo(new Random().nextInt(151));
     }
     
 }
