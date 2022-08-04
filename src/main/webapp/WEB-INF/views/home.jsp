@@ -12,7 +12,7 @@
     <div class = "mydiv">
         <div class="box">
             <div id="window_main">
-                <div id="window_title">POKeDEX</div>
+                <div id="window_title">POKeDEX: Home</div>
                 <div id="window_text">
                     <p>Enter a Pokemon name or ID and hit enter to search!</p>
                     <form action="searchresults" method="POST">
@@ -20,11 +20,15 @@
                     </form>
                     <br />
                     <div style="display:inline-block;vertical-align:top;">
-                        <img src="${pokemon.getOfficialArt()}" />
+                        <img src="${pokemon.getOfficialArt()}" width="200" height="200"/>
                     </div>
                     <div style="display:inline-block;">
                         <p><span class="poke_name">${pokemon.getName()}</span> <span class="poke_id">#${pokemon.getID()}</span>
-                        <p>Type(s): ${types}</p>
+                        <p>Type(s): ${pokemon.getType()}</p>
+
+                        <form action="/addfavorite" method="POST">
+                            <button class="button" name="favorite" value ="${pokemon.getName()}">Favorite</button>
+                        </form>
                     </div>
                     <br />
 

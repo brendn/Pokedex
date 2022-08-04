@@ -3,6 +3,7 @@ package co.grandcircus.pokedex;
 import co.grandcircus.pokedex.api.PokemonService;
 import co.grandcircus.pokedex.api.model.Pokemon;
 import co.grandcircus.pokedex.api.model.Sprite;
+import co.grandcircus.pokedex.controllers.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,16 +24,7 @@ public class PokedexController {
     public String home(Model model) {
         Pokemon pokemon = service.getRandomPokemon();
         model.addAttribute("pokemon", pokemon);
-        StringBuilder types = new StringBuilder();
-
-        for (int i = 0; i < pokemon.getTypes().length; i++) {
-            if (i == pokemon.getTypes().length - 1) {
-                types.append(pokemon.getTypes()[i]);
-            } else {
-                types.append(pokemon.getTypes()[i]).append(", ");
-            }
-        }
-        model.addAttribute("types", types.toString());
+        model.addAttribute("types", pokemon.getType());
         return "home";
     }
 

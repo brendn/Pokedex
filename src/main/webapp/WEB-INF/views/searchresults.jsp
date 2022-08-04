@@ -1,68 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Pokemon Search Results</title>
-<link rel="stylesheet" type="text/css" href="styles.css" />
-</head>
-
-<body>
-<div class="box">
-		<div id="window_main">
-			<div id="window_title">${search.getName()}</div>
-			<div id="window_text">
-			<div class="column">
-				<div class="row">
-					<div class="card">
-						<img src="${search.getSprite().getFront()}" alt="OfficialArt"
-							style="width: 150%">
-						<div class="container">
-
-							<h1 class="title">${search.getName()}</h1>
-
-							<form action="/addfavorite" method="POST">
-								<button class="button" name="favorite" value ="${search.getName()}">Favorite</button>
-							</form>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-	<br>
-	<br>
-	<c:forEach items="${pokemon}" var="poke">
-		<div class="box">
-			<div id="window_main">
-			<div id="window_title">${poke.getName()}</div>
+    <head>
+        <title>Search Results</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </head>
+    <body>
+        <div class="box">
+            <div id="window_main">
+                <div id="window_title">POKeDEX: Search Results</div>
                 <div id="window_text">
-				<div class="column">
-					<div class="row">
-						<div class="card">
-							<img src="${poke.getOfficialArt()}" alt="OfficialArt"
-								style="width: 75%">
-							<div class="container">
-
-								<p class="title">${poke.getName()}</p>
-								<p>${poke.getMoves()}</p>
-								<form action="/addfavorite" method="POST">
-									<button class="button" name="favorite" value ="${poke.getName()}">Favorite</button>
-								</form>
-
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-	</c:forEach>
-
-
-</body>
+                    <p>Enter a Pokemon name or ID and hit enter to search!</p>
+                    <form action="searchresults" method="POST">
+                        <input name="search" type="text" placeholder="Pokemon Name or ID" />
+                    </form>
+                    <br />
+                    <div style="display:inline-block;vertical-align:top;">
+                        <img src="${search.getOfficialArt()}" width="200" height="200"/>
+                    </div>
+                    <div style="display:inline-block;">
+                        <p><span class="poke_name">${search.getName()}</span> <span class="poke_id">#${search.getID()}</span>
+                        <p>Type(s): ${search.getType()}</p>
+                        <form action="/addfavorite" method="POST">
+                            <button class="button" name="favorite" value ="${search.getName()}">Favorite</button>
+                        </form>
+                    </div>
+                    <br />
+                    <p><div id="button"><a href="/">Random Pokemon</a></div>
+                    <div id="button"><a href="/favorite">View Favorites</a></div></p>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
