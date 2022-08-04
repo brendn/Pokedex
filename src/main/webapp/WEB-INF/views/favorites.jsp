@@ -24,10 +24,10 @@
                     </tr>
                         <c:forEach var="pokemon" items="${infoList}">
                             <tr>
-                                    <td><img src="${pokemon.getSprite().getFront()}"/></td>
-                                    <td>${pokemon.getName()} ${pokemon.getID()}</td>
-                                    <td>${pokemon.getType()}</td>
-                                    <td><a href="/delete?name=${pokemon.getName()}">Remove</a></td>
+                                <td><img src="${pokemon.getSprite().getFront()}"/></td>
+                                <td>${pokemon.getName()} (#${pokemon.getID()})</td>
+                                <td>${pokemon.getType()}</td>
+                                <td><a href="/delete?name=${pokemon.getName()}">Remove</a></td>
                             </tr>
                         </c:forEach>
                     </table>

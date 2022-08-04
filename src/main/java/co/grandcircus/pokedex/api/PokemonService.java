@@ -31,6 +31,10 @@ public class PokemonService {
     }
 
     public Pokemon getRandomPokemon() {
-        return getPokemonInfo(new Random().nextInt(151));
+        Pokemon pokemon = getPokemonInfo(new Random().nextInt(250));
+        if (pokemon.getName().contains("-")) {
+            return getRandomPokemon();
+        }
+        return pokemon;
     } 
 }

@@ -14,7 +14,12 @@
             <div id="window_main">
                 <div id="window_title">POKeDEX: Home</div>
                 <div id="window_text">
-                    <p>Enter a Pokemon name or ID and hit enter to search!</p>
+                    <c:if test="${not empty error}">
+                        <p>${error}</p>
+                    </c:if>
+                    <c:if test="${empty error}">
+                        <p>Enter a Pokemon name or ID and hit enter to search!</p>
+                    </c:if>
                     <form action="searchresults" method="POST">
                         <input name="search" type="text" placeholder="Pokemon Name or ID" />
                     </form>
@@ -27,7 +32,7 @@
                         <p>Type(s): ${pokemon.getType()}</p>
 
                         <form action="/addfavorite" method="POST">
-                            <button class="button" name="favorite" value ="${pokemon.getName()}">Favorite</button>
+                            <button type="button" name="favorite" value ="${pokemon.getName()}">Favorite</button>
                         </form>
                     </div>
                     <br />

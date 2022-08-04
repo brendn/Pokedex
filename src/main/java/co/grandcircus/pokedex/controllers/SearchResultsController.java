@@ -32,17 +32,7 @@ public class SearchResultsController {
     	try {
 			if (!(search.equals("")) && !(service.getPokemonByName(search) == null)) {
 				Pokemon searchPokemon = service.getPokemonInfo(service.getPokemonByName(search).getID());
-				StringBuilder types = new StringBuilder("[");
-
-		        for (int i = 0; i < searchPokemon.getTypes().length; i++) {
-		            if (i == searchPokemon.getTypes().length - 1) {
-		                types.append(searchPokemon.getTypes()[i]);
-		            } else {
-		                types.append(searchPokemon.getTypes()[i]).append(", ");
-		            }
-		        }
-		        types.append("]");
-		        model.addAttribute("types", types.toString());
+		        model.addAttribute("types", searchPokemon.getType());
 				model.addAttribute("search", service.getPokemonByName(search));
 				model.addAttribute("searchPokemon", searchPokemon);
 				

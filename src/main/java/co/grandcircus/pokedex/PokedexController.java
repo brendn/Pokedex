@@ -35,30 +35,28 @@ public class PokedexController {
 			if (!(search.equals("")) && !(service.getPokemonByName(search) == null)) {
 				search = search.toLowerCase();
 		    	Pokemon searchPokemon = service.getPokemonInfo(service.getPokemonByName(search).getID());
-				StringBuilder types = new StringBuilder("[");
-
-		        for (int i = 0; i < searchPokemon.getTypes().length; i++) {
-		            if (i == searchPokemon.getTypes().length - 1) {
-		                types.append(searchPokemon.getTypes()[i]);
-		            } else {
-		                types.append(searchPokemon.getTypes()[i]).append(", ");
-		            }
-		        }
-		        types.append("]");
-		        model.addAttribute("types", types.toString());
+		        model.addAttribute("types", searchPokemon.getType());
 				model.addAttribute("search", service.getPokemonByName(search));
 				model.addAttribute("searchPokemon", service.getPokemonInfo(service.getPokemonByName(search).getID()));
-				
 				return "searchresults";
 			} else {
-				
-				return "redirect:/";
+				setupHome(model);
+				model.addAttribute("error", "<b>ERROR</b>: Pokemon not found! Please try again.");
+				return "home";
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return "redirect:/";
+			setupHome(model);
+			model.addAttribute("error", "<b>ERROR</b>: Pokemon not found! Please try again.");
+			return "home";
 		}
     }
+
+	private void setupHome(Model model) {
+		Pokemon pokemon = service.getRandomPokemon();
+		model.addAttribute("pokemon", pokemon);
+		model.addAttribute("types", pokemon.getType());
+	}
 
 }

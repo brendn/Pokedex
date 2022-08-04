@@ -10,11 +10,6 @@ body {
 	text-rendering: optimizeLegibility;
 }
 
-img {
-    width: 200px;
-    height: 200px;
-}
-
 input[type=text] {
   width: 100%;
   padding: 12px 20px;
@@ -115,10 +110,21 @@ footer {
 	height: 30px;
 }
 
+
 table {
     border-collapse: collapse;
     font-size: 0.9em;
-    min-width: 124px;
+    width: 100%;
+    height: 150px;
+}
+.tableFixHead {
+    overflow-y: auto;
+    height: 22em;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
 }
 
 table, td {
@@ -132,7 +138,8 @@ td {
 
 th {
     background-color: #cccccc;
-    border: 1px solid #666666;
+    position: sticky;
+    top: 0; /* Don't forget this, required for the stickiness */
 }
 
 tbody tr {
