@@ -23,7 +23,7 @@ public class PokedexController {
     public String home(Model model) {
         Pokemon pokemon = service.getRandomPokemon();
         model.addAttribute("pokemon", pokemon);
-        StringBuilder types = new StringBuilder("[");
+        StringBuilder types = new StringBuilder();
 
         for (int i = 0; i < pokemon.getTypes().length; i++) {
             if (i == pokemon.getTypes().length - 1) {
@@ -32,7 +32,6 @@ public class PokedexController {
                 types.append(pokemon.getTypes()[i]).append(", ");
             }
         }
-        types.append("]");
         model.addAttribute("types", types.toString());
         return "home";
     }
