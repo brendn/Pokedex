@@ -27,13 +27,11 @@ public class SearchResultsController {
 
 	@RequestMapping("/searchresults")
 	public String searchResults(Model model, @ModelAttribute("Search") String search) {
-		search = search.toLowerCase();
-    	
     	try {
-			if (!(search.equals("")) && !(service.getPokemonByName(search) == null)) {
-				Pokemon searchPokemon = service.getPokemonInfo(service.getPokemonByName(search).getID());
+			if (!(search.equals("")) && !(service.getPokemonByName(search.toLowerCase()) == null)) {
+				Pokemon searchPokemon = service.getPokemonInfo(service.getPokemonByName(search.toLowerCase()).getID());
 		        model.addAttribute("types", searchPokemon.getType());
-				model.addAttribute("search", service.getPokemonByName(search));
+				model.addAttribute("search", service.getPokemonByName(search.toLowerCase()));
 				model.addAttribute("searchPokemon", searchPokemon);
 				
 				return "searchresults";

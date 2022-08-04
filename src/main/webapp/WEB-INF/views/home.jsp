@@ -32,7 +32,7 @@
                         <p>Type(s): ${pokemon.getType()}</p>
 
                         <form action="/addfavorite" method="POST">
-                            <button type="button" name="favorite" value ="${pokemon.getName()}">Favorite</button>
+                            <button class="button" name="favorite" value ="${pokemon.getName()}">Favorite</button>
                         </form>
                     </div>
                     <br />
