@@ -35,16 +35,4 @@ public class FavoriteController {
 		
 		return "favorites";
 	}
-	
-	@RequestMapping("/addFavorite")
-
-	public String addFavorite(@RequestParam int id, @RequestParam String name, Model model) {
-		FavoritePokemon pokemon = new FavoritePokemon(id, name);
-
-		repo.insert(pokemon);
-		List<FavoritePokemon> pokemonList = repo.findAll();
-		model.addAttribute("pokemonList", pokemonList);
-		
-		return "favorites";
-	}
 }
