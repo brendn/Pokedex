@@ -30,10 +30,11 @@ public class PokedexController {
 
     @PostMapping("/searchresults")
     public String search(@RequestParam String search, Model model) {
-    	search = search.toLowerCase();
-    	Pokemon searchPokemon = service.getPokemonInfo(service.getPokemonByName(search).getID());
+   
     	try {
 			if (!(search.equals("")) && !(service.getPokemonByName(search) == null)) {
+				search = search.toLowerCase();
+		    	Pokemon searchPokemon = service.getPokemonInfo(service.getPokemonByName(search).getID());
 				StringBuilder types = new StringBuilder("[");
 
 		        for (int i = 0; i < searchPokemon.getTypes().length; i++) {
