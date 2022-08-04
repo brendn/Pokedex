@@ -1,33 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Favorites</title>
-</head>
-<body>
-<h1>Favorites</h1>
-<table class="table">
-<tr>
-<c:forEach var="pokemon" items="${infoList}">
-<td>
-${pokemon.name}<br>
-No. ${pokemon.getID()}<br>
-Types:
-<ul>
-<c:forEach var="type" items = "${pokemon.getTypes()}">
-<li>${type}</li>
-</c:forEach>
-</ul>
-<img src="${pokemon.getSprite().getFront()}">
-</td>
-</c:forEach>
-</tr>
-</table>
-<footer><form action="/">
-<input type="submit" value="Back home"></form></footer>
-</body>
+    <head>
+        <title>Pokemon API</title>
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+    </head>
+    <body>
+    <div class = "mydiv">
+        <div class="box">
+            <div id="window_main">
+                <div id="window_title">POKeDEX: Favorites</div>
+                <div id="window_text">
+                <div class="tableFixHead">
+                    <table style="height: 150px">
+                    <tr>
+                        <th><div></div></th>
+                        <th><div>Name / ID</div></th>
+                        <th><div>Type(s)</div></th>
+                        <th><div></div></th>
+                    </tr>
+                        <c:forEach var="pokemon" items="${infoList}">
+                            <tr>
+                                    <td><img src="${pokemon.getSprite().getFront()}"/></td>
+                                    <td>${pokemon.getName()} ${pokemon.getID()}</td>
+                                    <td>${pokemon.getType()}</td>
+                                    <td><a href="/delete?name=${pokemon.getName()}">Remove</a></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                    </div>
+                    <p><div id="button"><a href="/">Home</a></div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
 </html>

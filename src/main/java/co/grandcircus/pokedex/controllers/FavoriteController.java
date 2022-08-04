@@ -35,16 +35,19 @@ public class FavoriteController {
 		
 		return "favorites";
 	}
-	
-	@RequestMapping("/addFavorite")
 
-	public String addFavorite(@RequestParam int id, @RequestParam String name, Model model) {
-		FavoritePokemon pokemon = new FavoritePokemon(id, name);
-
-		repo.insert(pokemon);
-		List<FavoritePokemon> pokemonList = repo.findAll();
-		model.addAttribute("pokemonList", pokemonList);
-		
+	@RequestMapping("/delete")
+	public String deleteFavorite(@RequestParam String name, Model model) {
+		for (FavoritePokemon pokemon : repo.findAll()) {
+			if (pokemon.getName().equalsIgnoreCase(name)) {
+				repo.delete(pokemon);
+			}
+		}
+		List<Pokemon> infoList = new ArrayList<>();
+		for (FavoritePokemon dude : repo.findAll()) {
+			infoList.add(apiService.getPokemonInfo(dude.getId()));
+		}
+		model.addAttribute("infoList", infoList);
 		return "favorites";
 	}
 }

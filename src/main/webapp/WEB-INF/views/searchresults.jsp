@@ -24,6 +24,7 @@
                     <div style="display:inline-block;">
                         <p><span class="poke_name">${search.getName()}</span> <span class="poke_id">#${search.getID()}</span>
                         <p>Type(s): ${types}</p>
+
                         <form action="/addfavorite" method="POST">
                             <button class="button" name="favorite" value ="${search.getName()}">Favorite</button>
                         </form>

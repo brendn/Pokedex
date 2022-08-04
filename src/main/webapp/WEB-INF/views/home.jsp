@@ -9,25 +9,35 @@
         <link rel="stylesheet" type="text/css" href="styles.css" />
     </head>
     <body>
+    <div class = "mydiv">
         <div class="box">
             <div id="window_main">
-                <div id="window_title">POKeDEX</div>
+                <div id="window_title">POKeDEX: Home</div>
                 <div id="window_text">
-                    <p>Gotta catch them all!!</p>
+                    <p>Enter a Pokemon name or ID and hit enter to search!</p>
                     <form action="searchresults" method="POST">
-                        <input name="search" placeholder="Pokemon Name or ID" />
-                        <input type="submit" value="Search" />
+                        <input name="search" type="text" placeholder="Pokemon Name or ID" />
                     </form>
                     <br />
-                    <div id="button"><a href="/favorite">View Favorites</a></div>
+                    <div style="display:inline-block;vertical-align:top;">
+                        <img src="${pokemon.getOfficialArt()}" width="200" height="200"/>
+                    </div>
+                    <div style="display:inline-block;">
+                        <p><span class="poke_name">${pokemon.getName()}</span> <span class="poke_id">#${pokemon.getID()}</span>
+                        <p>Type(s): ${pokemon.getType()}</p>
+
+                        <form action="/addfavorite" method="POST">
+                            <button class="button" name="favorite" value ="${pokemon.getName()}">Favorite</button>
+                        </form>
+                    </div>
                     <br />
-                    <img src="${pokemon.getOfficialArt()}" />
-                    <p><span class="poke_name">${pokemon.getName()}</span> <span class="poke_id">#${pokemon.getID()}</span>
-                    ${types}
-                    </p>
-                    <p><div id="button"><a href="/">Random Pokemon</a></div></p>
+
+                    <p><div id="button"><a href="/">Random Pokemon</a></div>
+                    <div id="button"><a href="/favorite">View Favorites</a></div></p>
+
                 </div>
             </div>
+        </div>
         </div>
     </body>
 </html>
